@@ -41,15 +41,12 @@ class Solution {
             oneCount+=arr[i];
         }
         if(oneCount>0){
-            for(int i=0;i<n;i++){
-                arr[i]=0;
-            }    
             for(int i=n-1;i>=0;i--){
                 if(oneCount>0){
                     arr[i]=1;
                     oneCount--;
                 }else{
-                    break;
+                    arr[i]=0;
                 }
             }
         }
