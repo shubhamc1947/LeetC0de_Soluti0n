@@ -35,19 +35,16 @@ public class Main {
 
 class Solution {
     void segregate0and1(int[] arr, int n) {
-        // code here
-        int oneCount=0;
-        for(int i=0;i<n;i++){
-            oneCount+=arr[i];
-        }
-        if(oneCount>0){
-            for(int i=n-1;i>=0;i--){
-                if(oneCount>0){
-                    arr[i]=1;
-                    oneCount--;
-                }else{
-                    arr[i]=0;
-                }
+        int j = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (j == -1 && arr[i] == 1) {
+                j = i;
+            } else if (j != -1 && arr[i] != 1) {
+                // swap ith and jth index element
+                int t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+                j++;
             }
         }
         
