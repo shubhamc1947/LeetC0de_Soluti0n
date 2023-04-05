@@ -40,31 +40,22 @@ class GfG{
         insert(st, ele);
     }
 
-    // public static void insert(Stack<Integer> st, int ele) {
-    // Stack<Integer> temp = new Stack<>();
-    // while (st.size() > 0) {
-    // if (ele > st.peek()) {
-    // // > for top to bottom decending order
-    // // < for top to bottom assending order
-    // temp.push(st.pop());
-    // } else
-    // break;
-    // }
-    // st.push(ele);
-    // while (temp.size() > 0) {
-    // int tmp = temp.pop();
-    // st.push(tmp);
-    // }
-    // }
     public static void insert(Stack<Integer> st, int ele) {
-        if (st.size() == 0 || ele > st.peek()) {
-            st.push(ele);
-            return;
-        }
-        int top = st.pop();
-        insert(st, ele);
-        st.push(top);
-
+    Stack<Integer> temp = new Stack<>();
+    while (st.size() > 0) {
+    if (ele < st.peek()) {
+    // > for top to bottom decending order
+    // < for top to bottom assending order
+    temp.push(st.pop());
+    } else
+    break;
     }
+    st.push(ele);
+    while (temp.size() > 0) {
+    int tmp = temp.pop();
+    st.push(tmp);
+    }
+    }
+    
 
 }
