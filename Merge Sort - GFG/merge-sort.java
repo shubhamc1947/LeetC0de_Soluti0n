@@ -57,32 +57,27 @@ class Merge_Sort
 
 class Solution
 {
-    void merge(int arr[], int l, int r, int m)
+    void merge(int arr[], int si, int ei, int mid)
     {
-       int n1 = m - l + 1;
-        int n2 = r - m;
-        int[] left = new int[n1];
-        int[] right = new int[n2];
-        for (int i = 0; i < n1; i++) {
-            left[i] = arr[l + i];
-        }
-        for (int i = 0; i < n2; i++) {
-            right[i] = arr[m + 1 + i];
-        }
-        int i = 0, j = 0, idx = l;
-        while (i < n1 && j < n2) {
-            if (left[i] < right[j]) {
-                arr[idx++] = left[i++];
-            } else {
-                arr[idx++] = right[j++];
-            }
-        }
-        while (i < n1) {
-            arr[idx++] = left[i++];
-        }
-        while (j < n2) {
-            arr[idx++] = right[j++];
-        }
+        int i = si, j = mid + 1;
+    int temp[] = new int[ei - si + 1];
+    int k = 0;
+    while (i <= mid && j <= ei) {
+    if (arr[i] < arr[j]) {
+    temp[k++] = arr[i++];
+    } else {
+    temp[k++] = arr[j++];
+    }
+    }
+    while (i <= mid) {
+    temp[k++] = arr[i++];
+    }
+    while (j <= ei) {
+    temp[k++] = arr[j++];
+    }
+    for (k = 0, i = si; k < temp.length; k++) {
+    arr[i++] = temp[k];
+    }
     }
     void mergeSort(int arr[], int si, int ei)
     {
