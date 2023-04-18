@@ -35,9 +35,34 @@ class GFG {
 
 class Solution{
     public static int kthSmallest(int[] arr, int si, int ei, int k) 
-    { 
-        Arrays.sort(arr);
-        return arr[k-1];
+    {   
+        int idx=partition(arr,si,ei);
+        if(idx+1==k){
+            return arr[idx];
+        }else if(idx+1>k){
+          return  kthSmallest(arr,si,idx-1,k);
+        }else{
+           return kthSmallest(arr,idx+1,ei,k);
+        }
+       
+    } 
+    public static int partition(int arr[], int low, int high)
+    {
+         int j=low,i=low;
+        while(i<=high){
+            if(arr[i]<=arr[high]){
+              if(i!=j){
+                int t=arr[i];
+                arr[i]=arr[j];
+                arr[j]=t;
+              }
+              i++;
+              j++;
+            }else{
+                i++;
+            }
+        }
+        return j-1;
     } 
     
     
