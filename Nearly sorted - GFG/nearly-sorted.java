@@ -37,10 +37,18 @@ class Solution
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
     {
         // your code here
-        Arrays.sort(arr);
         ArrayList<Integer> ans=new ArrayList<>();
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
         for(int i=0;i<arr.length;i++){
-            ans.add(arr[i]);
+            if(pq.size()<=k){
+                pq.add(arr[i]);
+            }else{
+                ans.add(pq.remove());
+                pq.add(arr[i]);
+            }
+        }
+        while(pq.size()>0){
+            ans.add(pq.remove());
         }
         return ans;
     }
